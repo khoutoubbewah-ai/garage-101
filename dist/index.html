@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171713">
+  <meta name="description" content="Garage 101 is a hands-on, safety-first course for learning basic car care.">
+  <title>Garage 101 — Practical car care, made clear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#lesson-panel">Skip to lesson</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Garage 101 home"><span class="brand-mark" aria-hidden="true"><span></span></span><span>GARAGE <b>101</b></span></a>
+    <div class="header-actions">
+      <div class="course-progress" aria-label="Course progress"><span class="progress-copy"><b id="progress-count">0</b> / 7 stations practiced</span><span class="progress-track"><span id="progress-bar"></span></span></div>
+      <button class="icon-button" id="sound-toggle" type="button" aria-label="Turn interface sounds on" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Zm12.5 3a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 17.5 12Z"/></svg></button>
+    </div>
+  </header>
+  <main id="top">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow"><span>INDIANAPOLIS EDITION</span> · BEGINNER COURSE</p><h1 id="page-title">Know your car.<br><em>Own the moment.</em></h1></div>
+      <div class="intro-copy">
+        <p>Rotate the car, choose a highlighted part, and learn what to do before you ever need to do it roadside.</p>
+        <div class="safety-strip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.8 20h18.4L12 3Zm0 5.3c.6 0 1 .4 1 1v4.8a1 1 0 1 1-2 0V9.3c0-.6.4-1 1-1Zm0 9a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3Z"/></svg><span><b>Safety rule:</b> Your owner’s manual and vehicle labels always override this general course.</span></div>
+      </div>
+    </section>
+
+    <section class="workbench" aria-label="Interactive car maintenance course">
+      <div class="viewer-card">
+        <div class="viewer-topline"><div><span class="live-dot"></span><span>INTERACTIVE VEHICLE</span></div><div class="view-actions"><button id="rotate-left" type="button" aria-label="Rotate car left">↺</button><button id="reset-view" type="button">RESET VIEW</button><button id="rotate-right" type="button" aria-label="Rotate car right">↻</button></div></div>
+        <div class="canvas-wrap" id="canvas-wrap">
+          <canvas id="car-canvas" aria-label="Rotatable 3D illustration of a car with clickable maintenance hotspots"></canvas>
+          <div class="canvas-hint" id="canvas-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 11V7a1.5 1.5 0 0 1 3 0v3-5a1.5 1.5 0 0 1 3 0v5-3a1.5 1.5 0 0 1 3 0v4-2a1.5 1.5 0 0 1 3 0v5c0 4-2.8 7-7 7h-1c-2.1 0-3.3-.7-4.5-2.2L4 14.5A1.6 1.6 0 0 1 6.5 12L8 13.4V11Z"/></svg>DRAG TO ROTATE · TAP A MARKER</div>
+          <div class="orientation" aria-hidden="true"><span id="view-label">FRONT ¾ VIEW</span><span class="orientation-line"></span></div>
+        </div>
+        <div class="station-dock" role="list" aria-label="Maintenance stations">
+          <button class="station active" data-part="battery" type="button" role="listitem"><span class="station-number">01</span><span class="station-icon">＋<br>−</span><span class="station-label">BATTERY<br>&amp; JUMP</span><span class="station-status"></span></button>
+          <button class="station" data-part="oil" type="button" role="listitem"><span class="station-number">02</span><span class="station-icon">◒</span><span class="station-label">OIL &amp;<br>DIPSTICK</span><span class="station-status"></span></button>
+          <button class="station" data-part="tire" type="button" role="listitem"><span class="station-number">03</span><span class="station-icon">◎</span><span class="station-label">TIRE, JACK<br>&amp; LUGS</span><span class="station-status"></span></button>
+          <button class="station" data-part="wipers" type="button" role="listitem"><span class="station-number">04</span><span class="station-icon">⌁</span><span class="station-label">WIPER<br>BLADES</span><span class="station-status"></span></button>
+          <button class="station" data-part="air" type="button" role="listitem"><span class="station-number">05</span><span class="station-icon">≋</span><span class="station-label">ENGINE<br>AIR FILTER</span><span class="station-status"></span></button>
+          <button class="station" data-part="coolant" type="button" role="listitem"><span class="station-number">06</span><span class="station-icon">♨</span><span class="station-label">COOLANT<br>SYSTEM</span><span class="station-status"></span></button>
+          <button class="station" data-part="lights" type="button" role="listitem"><span class="station-number">07</span><span class="station-icon">◉</span><span class="station-label">LIGHTS &amp;<br>SIGNALS</span><span class="station-status"></span></button>
+        </div>
+      </div>
+      <aside class="lesson-panel" id="lesson-panel" aria-live="polite">
+        <div class="lesson-heading"><div><p class="lesson-kicker" id="lesson-kicker">STATION 01 · 10 MIN</p><h2 id="lesson-title">Battery &amp;<br>jump-starting</h2></div><span class="difficulty" id="lesson-difficulty">BEGINNER</span></div>
+        <p class="lesson-summary" id="lesson-summary"></p>
+        <div class="lesson-tabs" role="tablist" aria-label="Lesson sections"><button class="active" data-tab="identify" type="button" role="tab" aria-selected="true">FIND IT</button><button data-tab="service" type="button" role="tab" aria-selected="false">DO IT</button><button data-tab="maintain" type="button" role="tab" aria-selected="false">MAINTAIN</button></div>
+        <div class="lesson-body" id="lesson-body"></div>
+        <div class="lesson-footer"><button class="practice-button" id="practice-button" type="button"><span class="checkmark">✓</span><span><b>MARK PRACTICED</b><small>Saved on this device</small></span></button><button class="next-button" id="next-button" type="button" aria-label="Go to next station">NEXT <span>→</span></button></div>
+      </aside>
+    </section>
+
+    <section class="practice-section" aria-labelledby="practice-title">
+      <div class="section-heading"><p class="eyebrow">PRACTICE BAY</p><h2 id="practice-title">Build a roadside-ready routine.</h2><p>Practice at home, in daylight, before the weather or traffic makes a simple job harder.</p></div>
+      <div class="practice-grid">
+        <article class="practice-card primary-card"><div class="card-top"><span>01</span><span>15 MINUTES</span></div><div class="practice-visual tire-visual" aria-hidden="true"><span></span><i>80</i><i>100</i><i>60</i><i>40</i><i>20</i></div><h3>Spare-tire dry run</h3><p>Locate the spare, jack, lift points, lug wrench, wheel-lock key, and your vehicle’s torque spec.</p><label class="mini-check"><input type="checkbox" data-practice="spare"><span></span>I can find all six without guessing</label></article>
+        <article class="practice-card"><div class="card-top"><span>02</span><span>5 MINUTES</span></div><div class="practice-visual cable-visual" aria-hidden="true"><span>+</span><b></b><span>−</span></div><h3>Say the cable order</h3><p>Red dead, red donor, black donor, black metal. Removal is the exact reverse.</p><label class="mini-check"><input type="checkbox" data-practice="cables"><span></span>I can recite it without looking</label></article>
+        <article class="practice-card indy-card"><div class="card-top"><span>03</span><span>INDY SEASONS</span></div><div class="weather-row" aria-hidden="true"><span>❄</span><span>◌</span><span>☀</span><span>🍂</span></div><h3>Four-season check</h3><p>Cold tests batteries. Potholes test tires. Heat tests cooling. Leaves and salt test visibility.</p><label class="mini-check"><input type="checkbox" data-practice="season"><span></span>I added a monthly reminder</label></article>
+      </div>
+    </section>
+
+    <section class="golden-rules" aria-labelledby="rules-title"><div><p class="eyebrow light">THE NON-NEGOTIABLES</p><h2 id="rules-title">Four rules that matter more than speed.</h2></div><ol><li><span>01</span><p><b>Get out of traffic.</b> A tow is cheaper than working beside fast-moving vehicles.</p></li><li><span>02</span><p><b>Secure the car.</b> Flat ground, parking brake, correct gear, and wheel chocks.</p></li><li><span>03</span><p><b>Support it correctly.</b> Never put any part of yourself under a car held only by a jack.</p></li><li><span>04</span><p><b>Stop when unsure.</b> A manual, experienced helper, or professional is a smart tool—not a defeat.</p></li></ol></section>
+  </main>
+  <footer><div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><span></span></span><span>GARAGE <b>101</b></span></div><p>Built for calm decisions, clean hands optional.</p><a href="#top">BACK TO THE CAR ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
